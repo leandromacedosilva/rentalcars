@@ -12,5 +12,14 @@ class CategoriesRepository{
 }
 
 create({ description,  name }: ICreateCargoryDTO){
-  const category = new Category
+  const category = new Category();
 }
+
+Object.assign(category,{
+  name,
+  description,
+  created_at: new Date(),
+});
+
+this.categories.push(category);
+
