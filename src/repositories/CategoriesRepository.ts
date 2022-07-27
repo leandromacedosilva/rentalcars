@@ -15,15 +15,14 @@ constructor(){
     this.categories = [];
 }
 
-create({ description,  name }: ICreateCargoryDTO){
+create({ description,  name }: ICreateCargoryDTO): void {
   const category = new Category();
 
-
-Object.assign(category,
+  Object.assign(category, 
     name,
     description,
     created_at: new Date(),
-    );
+);
 
 this.categories.push(category);
 }
@@ -35,4 +34,4 @@ list(): Category[]{
 
 }
 
-export { categoriesRepository };
+export { CategoriesRepository };
