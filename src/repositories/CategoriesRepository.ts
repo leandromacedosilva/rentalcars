@@ -6,6 +6,14 @@ interface ICreateCargoryDTO{
   description: string;
 }
 
+//analisa o cadastro
+findByName(name: string): Category{
+  const category = this.categories.find(
+    (category) => category.name === name
+  );
+  return category;
+}
+
 class CategoriesRepository{
   /* PRIVATE define como o atributo será acessado */
   private categories: Category[];
