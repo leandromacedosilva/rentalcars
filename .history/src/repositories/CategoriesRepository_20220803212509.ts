@@ -50,6 +50,5 @@ findByName(name: string): Category{
   );
   return category;
 }
-}
 
 export { CategoriesRepository };
