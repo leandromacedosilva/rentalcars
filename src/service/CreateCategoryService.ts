@@ -1,18 +1,18 @@
 import { ICategoriesRepository } from "../repositories/ICategoriesRepository";
-// interface que recebe informações das rotas 
-interface IRequest{
+// interface que recebe informações das rotas
+interface IRequest {
     name: string;
     description: string;
 }
 
-class CreateCategoryService{
+class CreateCategoryService {
     // inicializa o objeto
     constructor(private categoriesRepository: ICategoriesRepository) {}
     // EXECUTE processa a inteface quando requisitado
-    execute({name, description}: IRequest) {
+    execute({ name, description }: IRequest) {
         // verifica o cadastro
         const categoryAlreadyExists = this.categoriesRepository.findByName(name);
-        if(categoryAlreadyExists) {
+        if (categoryAlreadyExists) {
             // retorna erro caso já exista a mesma informação
             throw new Error("Category already exists!");
         }
