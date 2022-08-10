@@ -1,9 +1,10 @@
+// import of library UUID
 import { v4 as uuidV4 } from "uuid";
 
-class Specifications {
+// class definition Category
+class CarsImage {
     id: string;
-    name: string;
-    description: string;
+    imageName: string;
     created_at: Date;
 
     constructor() {
@@ -13,4 +14,4 @@ class Specifications {
     }
 }
 
-export { Specifications };
+export { CarsImage };
