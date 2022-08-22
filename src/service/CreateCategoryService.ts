@@ -1,4 +1,4 @@
-import { ICategoriesRepository } from "../repositories/ICategoriesRepository";
+import { ICategoriesRepository } from "../modules/cars/repositories/ICategoriesRepository";
 // interface que recebe informações das rotas
 interface IRequest {
     name: string;
