@@ -1,24 +1,24 @@
 import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
-// cria-se interface para receber informações da rota
+// criando uma interface para receber as informações da minha rota
 interface IRequest {
     name: string;
     description: string;
 }
 
 class CreateCategoryUseCase {
-    // Inicializa-se o objeto
+    // Inicializando meu objeto
     constructor(private categoriesRepository: ICategoriesRepository) {}
-    // executa a tarefa quando requisitada
+    // o execute executa a minha tarefa quando é chamado.
     execute({ name, description }: IRequest) {
-        // verifica o cadastro
-        const categoryAlreadyExists = 
+        // verificação de cadastro
+        const categoryAlreadyExists =
             this.categoriesRepository.findByName(name);
 
         if (categoryAlreadyExists) {
-            // caso exista a informação, retorna uma exceção
-            throw new Error("Category Already Exists!");
+            // retornando erro caso exista o nome já cadastrado
+            throw new Error("Category Already Exists!!");
         }
-        // Caso contrário, o cadastro será feito aqui
+        // cadastrando os dados recebidos caso não haja redundância.
         this.categoriesRepository.create({ name, description });
     }
 }

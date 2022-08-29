@@ -1,7 +1,7 @@
 import { v4 as uuidV4 } from "uuid";
 
-class Specifications {
-    id: string;
+class Specification {
+    id?: string;
     name: string;
     description: string;
     created_at: Date;
@@ -13,4 +13,4 @@ class Specifications {
     }
 }
 
-export { Specifications };
+export { Specification };
