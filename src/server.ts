@@ -8,6 +8,7 @@ import swaggerFile from "./swagger.json";
 // import { specificationsRoutes } from "./routes/specification.routes";
 
 const app = express();
+const port = 8000;
 
 app.use(express.json());
 // criando uma rota de documentação e setando alguns parâmetros.
@@ -17,4 +18,6 @@ app.use(router);
 // app.use("/categories", categoriesRoutes);
 // app.use("/specifications", specificationsRoutes);
 
-app.listen(3333, () => console.log("Server is running!"));
+app.listen(port, () => {
+    console.log(`Express server running at http://localhost:${port}`)
+});
