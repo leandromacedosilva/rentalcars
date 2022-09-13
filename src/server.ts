@@ -1,15 +1,20 @@
 import express from "express";
+import swaggerUi from "swagger-ui-express";
 
 import { router } from "./routes";
+import swaggerFile from "./swagger.json";
 
-const port = 5000;
 // import { categoriesRoutes } from "./routes/categories.routes";
 // import { specificationsRoutes } from "./routes/specification.routes";
+
 const app = express();
+
 app.use(express.json());
+// criando uma rota de documentação e setando alguns parâmetros.
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
+
 app.use(router);
 // app.use("/categories", categoriesRoutes);
 // app.use("/specifications", specificationsRoutes);
-app.listen(port, () => {
-    console.log(`Express server running at http://127.0.0.1:${port}`);
-});
+
+app.listen(3333, () => console.log("Server is running!"));

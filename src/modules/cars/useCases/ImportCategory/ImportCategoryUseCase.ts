@@ -1,5 +1,3 @@
-// Create CLASS ImportCategoryUseCase
-
 import { parse as csvParse } from "csv-parse";
 import fs from "fs";
 
@@ -31,6 +29,8 @@ class ImportCategoryUseCase {
                     });
                 })
                 .on("end", () => {
+                    // removendo arquivos depois de lido
+                    fs.promises.unlink(file.path);
                     resolve(categories);
                 })
                 .on("error", (err) => {
@@ -40,7 +40,21 @@ class ImportCategoryUseCase {
     }
     async execute(file: Express.Multer.File): Promise<void> {
         const categories = await this.loadCategories(file);
-        console.log(categories);
+        // console.log(categories);
+
+        // verificando e salvando dados na tabela.
+        categories.map(async (category) => {
+            const { name, description } = category;
+
+            const existCategory = this.categoriesRepository.findByName(name);
+
+            if (!existCategory) {
+                this.categoriesRepository.create({
+                    name,
+                    description,
+                });
+            }
+        });
     }
 }
 
