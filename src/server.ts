@@ -19,5 +19,5 @@ app.use(router);
 // app.use("/specifications", specificationsRoutes);
 
 app.listen(port, () => {
-    console.log(`Express server running at http://localhost:${port}`)
+    console.log(`Express server running at http://localhost:${port}`);
 });
